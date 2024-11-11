@@ -17,11 +17,20 @@ h1 {
     color: #333;
 }
 
+/* Pendulum area styling */
 .pendulum-area {
     position: relative;
     width: 200px;
     height: 300px;
     margin: 20px auto;
+    background-color: transparent; /* Ensure canvas is visible */
+}
+
+#trailCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1; /* Behind the pendulum */
 }
 
 #pendulum {
@@ -29,13 +38,14 @@ h1 {
     top: 0;
     left: 50%;
     transform-origin: top center;
+    z-index: 2; /* In front of the trail */
 }
 
 #rod {
     width: 2px;
     height: 200px;
     background-color: #333;
-    margin: 0 auto;
+    transform-origin: top center;
 }
 
 #bob {
@@ -44,10 +54,12 @@ h1 {
     background-color: #ff6347;
     border-radius: 50%;
     position: absolute;
-    bottom: 0;
-    left: -20px;
+    top: 100%; /* Position bob at the end of the rod */
+    left: 50%;
+    transform: translate(-50%, -20px); /* Center bob horizontally */
 }
 
+/* Controls and button styling */
 .time-display {
     font-size: 1.2em;
     margin-top: 15px;
