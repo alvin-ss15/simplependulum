@@ -23,7 +23,7 @@ const trail = [];
 const gravity = 9.81; // Realistic gravity
 const rodLength = 200; // Pixels
 let damping = parseFloat(dampingSlider.value); // Adjustable damping coefficient
-const maxTrailLength = 150; // Maximum trail length
+const maxTrailLength = 75; // Maximum trail length
 const dt = 0.25; // Smaller time step for slower, realistic motion (approx 60 FPS)
 const equilibriumThreshold = 0.01; // Threshold for angle and angular velocity to stop timer
 
@@ -55,7 +55,7 @@ resetButton.addEventListener('click', () => {
     isRunning = false;
     angle = 0;
     angularVelocity = 0;
-    trail.length = 10; // Clear trail
+    trail.length = 100; // Clear trail
 
     // Reset slider and display
     angleSlider.value = 0;
@@ -80,6 +80,7 @@ function updatePendulumPhysics() {
     if (Math.abs(angle) < equilibriumThreshold && Math.abs(angularVelocity) < equilibriumThreshold) {
         stopCountingTime = true;
     }
+    
 }
 
 // Update pendulum position and draw trail
@@ -103,10 +104,10 @@ function drawTrail() {
 
     trail.forEach(point => {
         ctx.beginPath();
-        ctx.arc(point.x, point.y, 15, 0, Math.PI * 2);
+        ctx.arc(500-point.x, point.y, 15, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(99, 71, 255, ${point.opacity})`;
         ctx.fill();
-        point.opacity -= 0.03;
+        point.opacity -= 0.05;
         if (point.opacity < 0) point.opacity = 0;
     });
 }
@@ -123,7 +124,7 @@ function animate() {
             const elapsed = (Date.now() - startTime) / 1000;
             timeElapsed.textContent = elapsed.toFixed(1);
         }
-
+        
         requestAnimationFrame(animate);
     }
 }
