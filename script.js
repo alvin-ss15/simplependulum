@@ -23,7 +23,7 @@ const trail = [];
 const gravity = 9.81; // Realistic gravity
 const rodLength = 200; // Pixels
 let damping = parseFloat(dampingSlider.value); // Adjustable damping coefficient
-const maxTrailLength = 30; // Maximum trail length
+const maxTrailLength = 150; // Maximum trail length
 const dt = 0.25; // Smaller time step for slower, realistic motion (approx 60 FPS)
 const equilibriumThreshold = 0.01; // Threshold for angle and angular velocity to stop timer
 
@@ -55,7 +55,7 @@ resetButton.addEventListener('click', () => {
     isRunning = false;
     angle = 0;
     angularVelocity = 0;
-    trail.length = 0; // Clear trail
+    trail.length = 10; // Clear trail
 
     // Reset slider and display
     angleSlider.value = 0;
@@ -103,8 +103,8 @@ function drawTrail() {
 
     trail.forEach(point => {
         ctx.beginPath();
-        ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255, 99, 71, ${point.opacity})`;
+        ctx.arc(point.x, point.y, 15, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(99, 71, 255, ${point.opacity})`;
         ctx.fill();
         point.opacity -= 0.03;
         if (point.opacity < 0) point.opacity = 0;
