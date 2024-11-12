@@ -64,16 +64,19 @@ h1 {
 .time-display {
     font-size: 1.2em;
     margin-top: 15px;
-}
-
-.controls {
-    margin-top: 20px;
+    margin-bottom: 15px
 }
 
 #angleSlider {
     width: 150px;
     margin: 10px;
 }
+
+#dampingSlider {
+    width: 150px;
+    margin: 10px;
+}
+
 
 button {
     padding: 10px 15px;
