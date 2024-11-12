@@ -104,7 +104,7 @@ function drawTrail() {
 
     trail.forEach(point => {
         ctx.beginPath();
-        ctx.arc(500-point.x, point.y, 15, 0, Math.PI * 2);
+        ctx.arc(point.x, point.y, 15, 0, Math.PI * 2);
         ctx.fillStyle = `rgba(99, 71, 255, ${point.opacity})`;
         ctx.fill();
         point.opacity -= 0.05;

@@ -20,17 +20,18 @@ h1 {
 /* Pendulum area styling */
 .pendulum-area {
     position: relative;
-    width: 200px;
+    width: 800px;
     height: 300px;
     margin: 20px auto;
     background-color: transparent; /* Ensure canvas is visible */
 }
 
 #trailCanvas {
-    position: absolute;
+    background-color: transparent;
     top: 0;
     left: 0;
     z-index: 1; /* Behind the pendulum */
+    transform: scale(-1,1);
 }
 
 #pendulum {
